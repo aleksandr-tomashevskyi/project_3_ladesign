@@ -1,0 +1,67 @@
+@import '_null';
+@import '../../node_modules/normalize.css/normalize';
+@import '_vars';
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400&family=Roboto:wght@300&display=swap');
+body{
+   background-color: indianred;
+}
+.wrapper{
+   width: 320px;
+   overflow-x: hidden;
+   margin: 0 auto;
+}
+.container{
+   width: 290px;
+   margin: 0 auto;
+}
+.header{
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   border-bottom: $decorative-line solid 1px;
+   height: 70px;
+   &__content{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+   }
+   &__contact-info{
+      display: flex;
+      align-items: center;
+      &::before{
+         content: url(../icons/icon-phone.svg);
+         position: relative;
+         right: 10px;
+         top: -2px;
+         width: 21px;
+         height: 21px;
+      }
+   }
+   &__contact-phone{
+      @extend %menu-items-font;
+      font-size: 16px;
+      line-height: 18px;
+      color: #FFFFFF;
+   }
+   &__menu-icon{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 19px;
+      width: 40px;
+      position: relative;
+      border-top: solid #FFFFFF 3px;
+      border-bottom: solid #FFFFFF 3px;
+   }
+   &__menu-icon-item{
+      width: 100%;
+      height: 3px;
+      background-color: white;
+   }
+}
+.logo{
+   width: 30px;
+   height: 30px;
+   background: transparent;
+}
