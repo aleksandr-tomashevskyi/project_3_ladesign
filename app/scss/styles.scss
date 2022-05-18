@@ -139,6 +139,10 @@
       color: #FFFFFF;
       margin-bottom: 10px;
       text-transform: uppercase;
+      @media(min-width: 768px){
+         font-size: 140px;
+         line-height: 164px;
+      }
    }
    &__text{
       font-family: 'Roboto Condensed', sans-serif;
@@ -147,6 +151,10 @@
       line-height: 24px;
       letter-spacing: 0.12em;
       color: #FFFFFF;
+      @media(min-width: 768px){
+         font-size: 20px;
+         line-height: 27px;
+      }
    }
 }
 
