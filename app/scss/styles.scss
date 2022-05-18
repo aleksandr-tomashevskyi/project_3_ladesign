@@ -16,6 +16,9 @@
    width: 290px;
    margin: 0 auto;
    // padding: 0 15px;
+   @media(min-width: 768px){
+      width: 676px;
+   }
 }
 .header{
    display: flex;
@@ -30,18 +33,14 @@
    right: 0;
    &__content{
       display: flex;
-      justify-content: space-between;
       align-items: center;
    }
    &__contact-info{
-      position: relative;
-      &::before{
-         content: url(../icons/icon-phone.svg);
-         position: absolute;
-         left: -28px;
-         top: -2px;
-         width: 21px;
-         height: 21px;
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      @media(min-width: 768px){
+         justify-content: flex-end;
       }
    }
    &__contact-phone{
@@ -50,16 +49,33 @@
       line-height: 18px;
       color: #FFFFFF;
       letter-spacing: 0.05em;
+      position: relative;
+      left: 15px;
+      &::before{
+         content: url(../icons/icon-phone.svg);
+         position: absolute;
+         left: -28px;
+         top: -2px;
+         width: 21px;
+         height: 21px;
+      }
+      @media(min-width: 768px){
+         margin-right: 80px;
+      }
    }
    &__menu-icon{
       display: flex;
       flex-direction: column;
       justify-content: center;
+      // flex: 0 0 auto;
       height: 19px;
       width: 40px;
       position: relative;
       border-top: solid #FFFFFF 3px;
       border-bottom: solid #FFFFFF 3px;
+      @media(min-width: 1024px){
+         display: none;
+      }
    }
    &__menu-icon-item{
       width: 100%;
@@ -68,9 +84,20 @@
    }
 }
 .logo{
+   // flex: 0 0 auto;
    width: 30px;
    height: 30px;
    background: transparent;
+}
+.navigation{
+   display: none;
+   @media(min-width: 1024px){
+      display: block;
+   }
+   &__link{
+      text-transform: uppercase;
+      @extend %menu-items-font;
+   }
 }
 
 
@@ -83,6 +110,10 @@
    background-repeat: none;
    background-size: cover;
    z-index: 1;
+   @media(min-width: 768px){
+   background: url(../img/initial-768.png);
+   background-position: bottom center;
+}
    &__body{
       display: flex;
       flex-direction: column;
@@ -90,6 +121,9 @@
       height: 480px;
       background-color: rgba($color: #000000, $alpha: 0.6);
       z-index: 2;
+      @media(min-width: 768px){
+         height: 600px;
+      }
    }
    &__content{
       text-align: center;
@@ -104,6 +138,7 @@
       letter-spacing: 0.08em;
       color: #FFFFFF;
       margin-bottom: 10px;
+      text-transform: uppercase;
    }
    &__text{
       font-family: 'Roboto Condensed', sans-serif;
@@ -135,14 +170,17 @@
       @extend %menu-items-font;
       color: $accent;
       margin: 0 15px;
-      letter-spacing: 0.15em;
    }
    &__copyrights{
       margin: 0 auto;
       text-align: center
    }
    &__copyrights-text{
-      @extend %menu-items-font;
-      color: $accent;
+      // @extend %menu-items-font;
+      font-family: 'Roboto', sans-serif;
+      font-weight: 300;
+      font-size: 13px;
+      line-height: 15px;
+      color: #878787;
    }
 }
