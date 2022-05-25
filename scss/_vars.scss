@@ -5,6 +5,55 @@
    line-height: 16px;
    letter-spacing: 0.15em;
 }
+@mixin title-second-font{
+   font-family: 'Roboto Condensed', sans-serif;
+   font-weight: 300;
+   font-size: 30px;
+   line-height: 36px;
+   letter-spacing: 0.08em;
+   @media(min-width: 768px){
+      font-size: 40px;
+      line-height: 46px;
+   }
+}
+@mixin title-third-font{
+   font-family: 'Roboto Condensed', sans-serif;
+   font-weight: 300;
+   font-size: 20px;
+   line-height: 25px;
+   letter-spacing: 0.08em;
+   @media(min-width: 768px){
+      font-size: 30px;
+      line-height: 45px;
+   }
+}
+@mixin title-fourth-font{
+   font-family: 'Roboto Condensed', sans-serif;
+   font-weight: 300;
+   font-size: 16px;
+   line-height: 24px;
+   letter-spacing: 0.12em;
+   @media(min-width: 768px){
+      font-size: 20px;
+      line-height: 27px;
+   }
+}
+@mixin sub-title-font{
+   font-family: 'Roboto', sans-serif;
+   font-weight: 300;
+   font-size: 18px;
+   line-height: 24px;
+   @media(min-width: 768px){
+      font-size: 18px;
+      line-height: 27px;
+   }
+}
+@mixin plain-text-font{
+   font-family: 'Roboto', sans-serif;
+   font-weight: 300;
+   font-size: 16px;
+   line-height: 24px;
+}
 @mixin background-image-settings{
    background-position: center bottom;
    background-size: cover;
@@ -14,3 +63,4 @@
 $accent: #777777;
 $buttons-color: #393246;
 $decorative-line: #878787;
+$lines: #D5D5D5;
