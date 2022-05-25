@@ -138,9 +138,6 @@
       &:nth-child(2){
          margin: 0 50px;
       }
-      &:last-child{
-         // margin-right: 95px;
-      }
    }
    &__link{
       text-transform: uppercase;
@@ -199,21 +196,99 @@
       }
    }
    &__text{
-      font-family: 'Roboto Condensed', sans-serif;
-      font-weight: 300;
-      font-size: 16px;
-      line-height: 24px;
-      letter-spacing: 0.12em;
+      @include title-fourth-font;
       color: #FFFFFF;
       max-width: 648px;
       margin: 0 auto;
-      @media(min-width: 768px){
-         font-size: 20px;
-         line-height: 27px;
-      }
    }
 }
 
+.about{
+   margin-top: 69px;
+   &__content{
+      width: 100%;
+      margin: 0 auto;
+   }
+   &__title{
+      @include title-second-font;
+      color: $accent;
+      margin-bottom: 23px;
+   }
+   &__description{
+      @include sub-title-font;
+      color: $accent;
+      margin-bottom: 39px;
+   }
+   &__list-item{
+      border-top: solid 1px $lines;
+      padding: 28px 0;
+      width: 100%;
+      &:last-child{
+         border-bottom: solid 1px $lines;
+         margin-bottom: 47px;
+      }
+   }
+   &__list-item-title-container{
+      position: relative;
+      z-index: 2;
+      background-color: #FFFFFF;
+      &::after{
+         content: url('../icons/icon_arrow.svg');
+         height: 30px;
+         width: 30px;
+         position: absolute;
+         right: 0;
+         top: 50%;
+         transform: translateY(-50%);
+      }
+      &:hover{
+         cursor: pointer;
+      }
+   }
+   &__list-item-title-container--active{
+      &::after{
+         content: url('../icons/icon_arrow_up.svg');
+         height: 30px;
+         width: 30px;
+         position: absolute;
+         right: 0;
+         top: 50%;
+         transform: translateY(-50%);
+      }
+   }
+   &__list-item-title{
+      @include title-fourth-font;
+      color: $accent;
+      text-transform: uppercase;
+      max-width: 236px;
+   }
+   &__list-item-text-container{
+      margin-top: 15px;
+      display: none;
+      overflow-y: hidden;
+   }
+   &__list-item-text-container--active{
+      display: block
+   }
+   &__list-item-text{
+      @include plain-text-font;
+      color: $accent;
+      z-index: 1;
+      // opacity: 0;
+      position: relative;
+      top: -100px;
+      transition: all linear 0.2s;
+   }
+   &__list-item-text--active{
+      top: 0;
+      // opacity: 1;
+   }
+   &__image{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+   }
+}
 
 .footer{
    flex: 0 0 auto;
