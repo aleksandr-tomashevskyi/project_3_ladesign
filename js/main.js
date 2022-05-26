@@ -1,5 +1,7 @@
 'use strict'
 
+//    About list logic start
+
 const aboutList = document.querySelector('.about__list')
 
 console.log(aboutList);
@@ -22,9 +24,11 @@ function checkClickAbout(event){
 function aboutOpenNestedList(){
    aboutContainerForChange.classList.toggle('about__list-item-text-container--active');
    aboutTitleContainerForChange.classList.toggle('about__list-item-title-container--active');
-   setTimeout(()=> aboutTextForChange.classList.toggle('about__list-item-text--active'), 50);
+   setTimeout(()=> aboutTextForChange.classList.toggle('about__list-item-text--active'), 10);
 }
 
 aboutList.addEventListener("click", checkClickAbout);
+
+//    About list logic end
 
 

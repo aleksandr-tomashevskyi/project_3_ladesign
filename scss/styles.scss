@@ -204,7 +204,7 @@
 }
 
 .about{
-   margin-top: 69px;
+   margin-top: 70px;
    &__content{
       width: 100%;
       margin: 0 auto;
@@ -213,15 +213,51 @@
       @include title-second-font;
       color: $accent;
       margin-bottom: 23px;
+      @media(min-width: 768px){
+         margin-bottom: 30px;
+         max-width: 442px;
+      }
+      @media(min-width: 768px){
+         margin-bottom: 50px;
+         max-width: initial;
+      }
+   }
+   &__content{
+      @media(min-width: 1024px){
+         display: flex;
+         column-gap: 50px;
+      }
+      @media(min-width: 1408px){
+         column-gap: 102px;
+      }
+   }
+   &__flex-column{
+      &:first-child{
+         flex: 1;
+      }
+      &:last-child{
+      flex: 0 0 450px;
+      @media(min-width: 1408px){
+      flex: 0 0 585px;
+      }
+   }
    }
    &__description{
       @include sub-title-font;
       color: $accent;
       margin-bottom: 39px;
+      @media(min-width: 768px){
+         margin-bottom: 30px;
+         max-width: 442px;
+      }
+      @media(min-width: 1024px){
+         margin-bottom: 50px;
+         max-width: none;
+      }
    }
    &__list-item{
       border-top: solid 1px $lines;
-      padding: 28px 0;
+      padding: 25px 0;
       width: 100%;
       &:last-child{
          border-bottom: solid 1px $lines;
@@ -261,6 +297,9 @@
       color: $accent;
       text-transform: uppercase;
       max-width: 236px;
+      @media(min-width: 768px){
+         max-width: 442px;
+      }
    }
    &__list-item-text-container{
       margin-top: 15px;
@@ -268,25 +307,54 @@
       overflow-y: hidden;
    }
    &__list-item-text-container--active{
-      display: block
+      display: block;
    }
    &__list-item-text{
       @include plain-text-font;
       color: $accent;
-      z-index: 1;
-      // opacity: 0;
-      position: relative;
-      top: -100px;
-      transition: all linear 0.2s;
+      opacity: 0;
+      // position: relative;
+      // top: -100px;
+      transition: all linear 0.4s;
+      margin-right: 35px;
    }
    &__list-item-text--active{
-      top: 0;
-      // opacity: 1;
+      // top: 0;
+      opacity: 1;
+   }
+   &__image-container{
+      margin: 0 auto;
+      width: 100%;
+      height: 39vh;
+      overflow: hidden;
+      @media(min-width: 768px){
+         height: 528px;
+         max-height: initial;
+         max-width: initial;
+      }
+      @media(min-width: 1024px){
+         width: 100%;
+      }
+   }
+   &__image-container--inside{
+      display: none;
+      @media(min-width: 768px){
+         display: block;
+      }
+   }
+   &__image-container--outside{
+      @media(min-width: 768px){
+         display: none;
+      }
    }
    &__image{
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: bottom center;
+      @media(min-width: 1024px){
+      object-position: 56% bottom;
+      }
    }
 }
 
