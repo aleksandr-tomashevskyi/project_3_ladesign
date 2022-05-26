@@ -205,6 +205,9 @@
 
 .about{
    margin-top: 70px;
+   @media(min-width: 768px){
+      margin-top: 150px;
+   }
    &__content{
       width: 100%;
       margin: 0 auto;
@@ -236,11 +239,11 @@
          flex: 1;
       }
       &:last-child{
-      flex: 0 0 450px;
-      @media(min-width: 1408px){
-      flex: 0 0 585px;
+         flex: 0 0 450px;
+         @media(min-width: 1408px){
+            flex: 0 0 585px;
+         }
       }
-   }
    }
    &__description{
       @include sub-title-font;
@@ -353,7 +356,7 @@
       object-fit: cover;
       object-position: bottom center;
       @media(min-width: 1024px){
-      object-position: 56% bottom;
+         object-position: 56% bottom;
       }
    }
 }
