@@ -10,7 +10,7 @@
    min-height: 100%;
    // end footer adjustment
    width: 100%;
-   overflow-x: hidden;
+   // overflow-x: hidden;
 }
 .container{
    width: 290px;
@@ -361,6 +361,51 @@
    }
 }
 
+
+.portfolio{
+   margin-top: 66px;
+   @media(min-width: 768px){
+      margin-top: 109px;
+   }
+   &__content{
+      margin: 0 auto;
+   }
+   &__title{
+      @include title-second-font;
+      text-transform: uppercase;
+      color: $accent;
+      text-align: center;
+      margin-bottom: 39px;
+      @media(min-width: 768px){
+      margin-bottom: 59px;
+   }
+   }
+   &__menu-body{
+      overflow-x: auto;
+      touch-action: pan-x;
+   }
+   &__menu-list{
+      width: 662px;
+      display: flex;
+      justify-content: space-between;
+      @media(min-width: 768px){
+      margin: 0 auto;
+   }
+   }
+   &__menu-button{
+      @include menu-items-font;
+      text-transform: uppercase;
+      color: $buttons-color;
+      background: transparent;
+      // border: none;
+      padding-bottom: 10px;
+   }
+   &__menu-button--selected{
+      border-bottom: solid $buttons-color 2px;
+   }
+}
+
+
 .footer{
    flex: 0 0 auto;
    height: 250px;
@@ -368,7 +413,7 @@
    flex-direction: column;
    justify-content: center;
    background-color: #F7F7F7;
-   &footer__container{
+   &__container{
       margin: 0 auto;
    }
    &__instagram-link{
