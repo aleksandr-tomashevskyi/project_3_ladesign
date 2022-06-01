@@ -364,6 +364,7 @@
 
 .portfolio{
    margin-top: 66px;
+   margin-bottom: 66px;
    @media(min-width: 768px){
       margin-top: 109px;
    }
@@ -383,12 +384,14 @@
    &__menu-body{
       overflow-x: auto;
       touch-action: pan-x;
+      border-bottom: solid $lines 1px;
    }
    &__menu-list{
-      width: 662px;
+      width: 580px;
       display: flex;
       justify-content: space-between;
       @media(min-width: 768px){
+      width: 662px;
       margin: 0 auto;
    }
    }
