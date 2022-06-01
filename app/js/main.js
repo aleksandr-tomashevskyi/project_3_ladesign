@@ -4,12 +4,11 @@
 
 const aboutList = document.querySelector('.about__list')
 
-console.log(aboutList);
-
 let clickedAboutItem;
 let aboutContainerForChange;
 let aboutTextForChange;
 let aboutTitleContainerForChange;
+
 function checkClickAbout(event){
    if(event.target.closest('.about__list-item-title-container')){
       aboutTitleContainerForChange = event.target.closest('.about__list-item-title-container');
@@ -31,4 +30,27 @@ aboutList.addEventListener("click", checkClickAbout);
 
 //    About list logic end
 
+//    Portfolio menu sliding
 
+const portfolioMenu = document.querySelector('.portfolio__menu');
+let portfolioTouchStartX;
+let portfolioTouchEndX;
+
+function portfolioTouchStart(event){
+   event.preventDefault();
+   portfolioTouchStartX = Math.floor(event.changedTouches[0].clientX);
+   console.log(portfolioTouchStartX)
+}
+
+function portfolioTouchEnd(event){
+   
+}
+
+portfolioMenu.addEventListener('touchstart', portfolioTouchStart)
+// portfolioMenu.addEventListener('touchmove', function(event){
+//    console.log(event.changedTouches[0])
+// })
+portfolioMenu.addEventListener('touchend', function(event){
+   portfolioTouchEndX = Math.floor(event.changedTouches[0].clientX);
+   console.log(portfolioTouchEndX)
+})

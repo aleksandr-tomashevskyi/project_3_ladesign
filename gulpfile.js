@@ -17,9 +17,18 @@ function buildStyles() {
     .pipe(gulp.dest('app/css/'))
     .pipe(browserSync.reload({stream: true}));
 };
+function buildJs(){
+  return gulp.src([
+    "./node_modules/mixitup/dist/mixitup.min.js"
+  ])
+  .pipe(rename("libs.min.js"))
+  .pipe(gulp.dest("app/js"))
+  .pipe(browserSync.reload({stream: true}));
+};
 function serverStart(){
   browserSync.init({
     server: {
+        host: "192.168.31.101",
         baseDir: "app/"
     }
 });
@@ -28,6 +37,7 @@ function browserReload(){
   browserSync.reload();
 }
 exports.buildStyles = buildStyles;
+exports.buildJs = buildJs;
 function watch() {
   gulp.watch('app/scss/**/*.scss', buildStyles);
   gulp.watch('app/*.html').on('change', browserReload);

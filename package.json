@@ -2,7 +2,7 @@
   "name": "project_3_ladesign",
   "version": "1.0.0",
   "description": "interior design company's website",
-  "main": "index.js",
+  "main": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -25,6 +25,8 @@
     "sass": "^1.51.0"
   },
   "dependencies": {
-    "normalize.css": "^8.0.1"
+    "mixitup": "^3.3.1",
+    "normalize.css": "^8.0.1",
+    "uglify": "^0.1.5"
   }
 }
