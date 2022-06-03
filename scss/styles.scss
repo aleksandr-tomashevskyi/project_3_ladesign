@@ -408,6 +408,10 @@
       border-bottom: solid $buttons-color 2px;
    }
    &__gallery{
+      display: grid;
+      margin: 0 auto;
+      width: 100%;
+      row-gap: 10px;
       @media(min-width: 768px){
          display: grid;
          grid-template-columns: repeat(2, minmax(auto, 322px));
@@ -415,14 +419,16 @@
          column-gap: 30px;
          row-gap: 30px;
       }
+      @media(min-width: 1024px){
+         display: grid;
+         grid-template-columns: repeat(4, minmax(auto, 225px));
+         grid-auto-rows: minmax(auto, 210px);
+         column-gap: 20px;
+         row-gap: 20px;
+      }
    }
    &__gallery-item{
-      margin-bottom: 10px;
       overflow: hidden;
-      border: solid red;
-      @media(min-width: 768px){
-      margin-bottom: 0;
-   }
    }
    &__gallery-item--pc{
       display: none;

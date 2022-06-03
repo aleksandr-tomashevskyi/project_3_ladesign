@@ -1,4 +1,6 @@
 'use strict'
+var mixer = mixitup('.portfolio__gallery');
+
 
 //    About list logic start
 
@@ -30,27 +32,27 @@ aboutList.addEventListener("click", checkClickAbout);
 
 //    About list logic end
 
-//    Portfolio menu sliding
+// //    Portfolio menu sliding
 
-const portfolioMenu = document.querySelector('.portfolio__menu');
-let portfolioTouchStartX;
-let portfolioTouchEndX;
+// const portfolioMenu = document.querySelector('.portfolio__menu');
+// let portfolioTouchStartX;
+// let portfolioTouchEndX;
 
-function portfolioTouchStart(event){
-   event.preventDefault();
-   portfolioTouchStartX = Math.floor(event.changedTouches[0].clientX);
-   console.log(portfolioTouchStartX)
-}
+// function portfolioTouchStart(event){
+//    event.preventDefault();
+//    portfolioTouchStartX = Math.floor(event.changedTouches[0].clientX);
+//    console.log(portfolioTouchStartX)
+// }
 
-function portfolioTouchEnd(event){
+// function portfolioTouchEnd(event){
    
-}
+// }
 
-portfolioMenu.addEventListener('touchstart', portfolioTouchStart)
-// portfolioMenu.addEventListener('touchmove', function(event){
-//    console.log(event.changedTouches[0])
+// portfolioMenu.addEventListener('touchstart', portfolioTouchStart)
+// // portfolioMenu.addEventListener('touchmove', function(event){
+// //    console.log(event.changedTouches[0])
+// // })
+// portfolioMenu.addEventListener('touchend', function(event){
+//    portfolioTouchEndX = Math.floor(event.changedTouches[0].clientX);
+//    console.log(portfolioTouchEndX)
 // })
-portfolioMenu.addEventListener('touchend', function(event){
-   portfolioTouchEndX = Math.floor(event.changedTouches[0].clientX);
-   console.log(portfolioTouchEndX)
-})
