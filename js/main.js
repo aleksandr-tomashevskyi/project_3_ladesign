@@ -45,7 +45,7 @@ aboutList.addEventListener("click", checkClickAbout);
 // }
 
 // function portfolioTouchEnd(event){
-   
+
 // }
 
 // portfolioMenu.addEventListener('touchstart', portfolioTouchStart)
@@ -57,6 +57,22 @@ aboutList.addEventListener("click", checkClickAbout);
 //    console.log(portfolioTouchEndX)
 // })
 
-const galleryItemsCollection = document.querySelectorAll(".portfolio__gallery-item--additional");
+//    Porfolio logic
 
-console.log(galleryItemsCollection)
+const galleryItemsCollection = document.querySelectorAll(".portfolio__gallery-item--additional");
+let portfolioMenuSelected = document.querySelector(".portfolio__menu-button--selected");
+console.log(portfolioMenuSelected);
+const portfolioMenu = document.querySelector(".portfolio__menu-body");
+function portfolioMenuCheck(event){
+   if(event.target.closest(".portfolio__menu-button")){
+      if(event.target.closest(".portfolio__menu-button") !== portfolioMenuSelected){
+         event.target.classList.toggle("portfolio__menu-button--selected");
+         portfolioMenuSelected.classList.toggle("portfolio__menu-button--selected");
+         portfolioMenuSelected = event.target;
+      }
+   }
+};
+
+portfolioMenu.addEventListener("click", portfolioMenuCheck);
+
+
