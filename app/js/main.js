@@ -56,3 +56,7 @@ aboutList.addEventListener("click", checkClickAbout);
 //    portfolioTouchEndX = Math.floor(event.changedTouches[0].clientX);
 //    console.log(portfolioTouchEndX)
 // })
+
+const galleryItemsCollection = document.querySelectorAll(".portfolio__gallery-item--additional");
+
+console.log(galleryItemsCollection)
