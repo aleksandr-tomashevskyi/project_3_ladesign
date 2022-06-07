@@ -57,22 +57,66 @@ aboutList.addEventListener("click", checkClickAbout);
 //    console.log(portfolioTouchEndX)
 // })
 
-//    Porfolio logic
 
+//    Porfolio logic start
+
+//portfolio menu buttons start
 const galleryItemsCollection = document.querySelectorAll(".portfolio__gallery-item--additional");
 let portfolioMenuSelected = document.querySelector(".portfolio__menu-button--selected");
 console.log(portfolioMenuSelected);
 const portfolioMenu = document.querySelector(".portfolio__menu-body");
+let portfolioMenuSelectedFilter;
+
+if(portfolioMenuSelected.dataset.filter == "all"){
+   portfolioMenuSelectedFilter = ""
+} else{
+portfolioMenuSelectedFilter = portfolioMenuSelected.dataset.filter;
+}
+
+const portfolioShowMoreButton = document.querySelector(".portfolio__button");
+let galleryAdditionalItemsSorted;
+let galleryShowed = false;
+// const galleryAdditionalItemsAll = document.querySelectorAll(".portfolio__gallery-item--additional");
+
+function portfolioShowMoreButtonFunc(eventResult){
+console.log(portfolioMenuSelectedFilter)
+
+   galleryAdditionalItemsSorted = document.querySelectorAll(`.portfolio__gallery-item--additional${portfolioMenuSelectedFilter}`);
+   galleryAdditionalItemsSorted.forEach(element => element.classList.toggle('portfolio__gallery-item--additional'));
+   galleryShowed = true;
+   portfolioShowMoreButton.classList.toggle("portfolio__button--hidden")
+};
+
 function portfolioMenuCheck(event){
    if(event.target.closest(".portfolio__menu-button")){
-      if(event.target.closest(".portfolio__menu-button") !== portfolioMenuSelected){
-         event.target.classList.toggle("portfolio__menu-button--selected");
-         portfolioMenuSelected.classList.toggle("portfolio__menu-button--selected");
-         portfolioMenuSelected = event.target;
+      portfolioMenuChange(event);
+   }
+};
+
+function portfolioMenuChange(event){
+   if(event.target.closest(".portfolio__menu-button") !== portfolioMenuSelected){
+      event.target.classList.toggle("portfolio__menu-button--selected");
+      portfolioMenuSelected.classList.toggle("portfolio__menu-button--selected");
+      portfolioMenuSelected = event.target;
+      if(portfolioMenuSelected.dataset.filter == "all"){
+         portfolioMenuSelectedFilter = ""
+      } else{
+      portfolioMenuSelectedFilter = portfolioMenuSelected.dataset.filter;
+   }
+      if(galleryShowed){
+         console.log("check")
+         galleryAdditionalItemsSorted.forEach(element => element.classList.toggle('portfolio__gallery-item--additional'));
+         portfolioShowMoreButton.classList.toggle("portfolio__button--hidden")
+         galleryShowed = false;
       }
    }
 };
 
 portfolioMenu.addEventListener("click", portfolioMenuCheck);
+portfolioShowMoreButton.addEventListener("click", portfolioShowMoreButtonFunc);
+
+//portfolio menu buttons end
+
+//portfolio show more button start
 
 

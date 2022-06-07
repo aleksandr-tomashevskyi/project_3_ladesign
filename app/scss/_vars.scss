@@ -1,3 +1,11 @@
+//colors
+$accent: #777777;
+$buttons-color: #393246;
+$decorative-line: #878787;
+$lines: #D5D5D5;
+
+//mixins
+
 @mixin menu-items-font{
    font-family: 'Roboto Condensed', sans-serif;
    font-weight: 400;
@@ -59,8 +67,22 @@
    background-size: cover;
    background-origin: padding-box;
 }
-//colors
-$accent: #777777;
-$buttons-color: #393246;
-$decorative-line: #878787;
-$lines: #D5D5D5;
+@mixin buttons-effects{
+   transition-duration: 0.3s;
+   &:hover{
+      background-color: $buttons-color;
+      border: solid $buttons-color 1px;
+      color: #FFFFFF;
+   }
+   &:active{
+      background-color: #4A415A;
+      border: solid $buttons-color 1px;
+      color: #FFFFFF;
+   }
+}
+@mixin menu-items-hover{
+   &:hover{
+      color: $buttons-color;
+      border-bottom: solid $buttons-color 1px;
+   }
+}
