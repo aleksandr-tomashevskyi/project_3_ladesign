@@ -143,6 +143,9 @@
       text-transform: uppercase;
       @include menu-items-font;
       color: #FFFFFF;
+      &:hover{
+         border-bottom: solid #FFFFFF 1px;
+      }
    }
 }
 
@@ -300,6 +303,9 @@
       color: $accent;
       text-transform: uppercase;
       max-width: 236px;
+      &:hover{
+         color: $buttons-color;
+      }
       @media(min-width: 768px){
          max-width: 442px;
       }
@@ -403,6 +409,9 @@
       background: transparent;
       // border: none;
       padding-bottom: 10px;
+      &:hover{
+         color: #000000;
+      }
    }
    &__menu-button--selected{
       border-bottom: solid $buttons-color 2px;
@@ -466,6 +475,7 @@
       border: solid $buttons-color 1px;
       color: $buttons-color;
       @include menu-items-font;
+      @include buttons-effects;
       text-transform: uppercase;
       background-color: #FFFFFF;
       margin: 0 auto 75px;
@@ -476,6 +486,9 @@
          margin: 0 auto 129px;
       }
    }
+   &__button--hidden{
+      display: none;
+   }
    &__form-link-wrapper{
       width: fit-content;
       margin: 0 auto;
@@ -485,6 +498,9 @@
       @include title-second-font;
       text-transform: uppercase;
       color: $accent;
+      border-bottom: solid $lines 1px;
+      cursor: pointer;
+      @include menu-items-hover;
       &::after{
          content: url(../icons/group.svg);
          position: relative;
@@ -495,7 +511,6 @@
       }
    }
 }
-
 
 .footer{
    flex: 0 0 auto;
