@@ -275,7 +275,7 @@
       z-index: 2;
       background-color: #FFFFFF;
       &::after{
-         content: url('../icons/icon_arrow.svg');
+         content: url($icon-arrow-down);
          height: 30px;
          width: 30px;
          position: absolute;
@@ -285,17 +285,25 @@
       }
       &:hover{
          cursor: pointer;
+         &::after{
+            content: url($icon-arrow-down-hover);
+         }
       }
    }
    &__list-item-title-container--active{
       &::after{
-         content: url('../icons/icon_arrow_up.svg');
+         content: url($icon-arrow-up);
          height: 30px;
          width: 30px;
          position: absolute;
          right: 0;
          top: 50%;
          transform: translateY(-50%);
+      }
+      &:hover{
+         &::after{
+            content: url($icon-arrow-up-hover);
+         }
       }
    }
    &__list-item-title{
