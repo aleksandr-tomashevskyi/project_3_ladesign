@@ -62,10 +62,25 @@ aboutList.addEventListener("click", checkClickAbout);
 
 //portfolio menu buttons start
 const galleryItemsCollection = document.querySelectorAll(".portfolio__gallery-item--additional");
+
+// const galleryImagesCollection = document.querySelectorAll(".portfolio__gallery-image--additional");
+
+galleryItemsCollection.forEach((element, index) =>{
+   console.log(index, element.lastChild.previousSibling)
+})
+
 let portfolioMenuSelected = document.querySelector(".portfolio__menu-button--selected");
-console.log(portfolioMenuSelected);
+
 const portfolioMenu = document.querySelector(".portfolio__menu-body");
+
 let portfolioMenuSelectedFilter;
+
+const portfolioShowMoreButton = document.querySelector(".portfolio__button");
+
+let galleryAdditionalItemsSorted;
+
+let galleryShowed = false;
+// const galleryAdditionalItemsAll = document.querySelectorAll(".portfolio__gallery-item--additional");
 
 if(portfolioMenuSelected.dataset.filter == "all"){
    portfolioMenuSelectedFilter = ""
@@ -73,16 +88,14 @@ if(portfolioMenuSelected.dataset.filter == "all"){
 portfolioMenuSelectedFilter = portfolioMenuSelected.dataset.filter;
 }
 
-const portfolioShowMoreButton = document.querySelector(".portfolio__button");
-let galleryAdditionalItemsSorted;
-let galleryShowed = false;
-// const galleryAdditionalItemsAll = document.querySelectorAll(".portfolio__gallery-item--additional");
-
 function portfolioShowMoreButtonFunc(eventResult){
 console.log(portfolioMenuSelectedFilter)
 
    galleryAdditionalItemsSorted = document.querySelectorAll(`.portfolio__gallery-item--additional${portfolioMenuSelectedFilter}`);
-   galleryAdditionalItemsSorted.forEach(element => element.classList.toggle('portfolio__gallery-item--additional'));
+   galleryAdditionalItemsSorted.forEach(function(element){
+      element.classList.toggle('portfolio__gallery-item--additional');
+      setTimeout(()=>element.lastChild.previousSibling.classList.toggle("portfolio__gallery-image--additional"), 10);
+});
    galleryShowed = true;
    portfolioShowMoreButton.classList.toggle("portfolio__button--hidden")
 };
@@ -105,7 +118,10 @@ function portfolioMenuChange(event){
    }
       if(galleryShowed){
          console.log("check")
-         galleryAdditionalItemsSorted.forEach(element => element.classList.toggle('portfolio__gallery-item--additional'));
+         galleryAdditionalItemsSorted.forEach(function(element){ 
+            element.classList.toggle('portfolio__gallery-item--additional');
+            setTimeout(()=>element.lastChild.previousSibling.classList.toggle("portfolio__gallery-image--additional"), 10);
+         });
          portfolioShowMoreButton.classList.toggle("portfolio__button--hidden")
          galleryShowed = false;
       }
@@ -116,7 +132,4 @@ portfolioMenu.addEventListener("click", portfolioMenuCheck);
 portfolioShowMoreButton.addEventListener("click", portfolioShowMoreButtonFunc);
 
 //portfolio menu buttons end
-
-//portfolio show more button start
-
 
