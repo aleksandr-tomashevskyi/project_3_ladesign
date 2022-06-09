@@ -15,9 +15,7 @@ function checkClickAbout(event){
    if(event.target.closest('.about__list-item-title-container')){
       aboutTitleContainerForChange = event.target.closest('.about__list-item-title-container');
       aboutContainerForChange = event.target.closest('.about__list-item-title-container').nextSibling.nextSibling;
-      console.log(aboutContainerForChange);
       aboutTextForChange = aboutContainerForChange.firstChild.nextSibling;
-      console.log(aboutTextForChange);
       aboutOpenNestedList();
    }
 }
@@ -65,10 +63,6 @@ const galleryItemsCollection = document.querySelectorAll(".portfolio__gallery-it
 
 // const galleryImagesCollection = document.querySelectorAll(".portfolio__gallery-image--additional");
 
-galleryItemsCollection.forEach((element, index) =>{
-   console.log(index, element.lastChild.previousSibling)
-})
-
 let portfolioMenuSelected = document.querySelector(".portfolio__menu-button--selected");
 
 const portfolioMenu = document.querySelector(".portfolio__menu-body");
@@ -80,51 +74,57 @@ const portfolioShowMoreButton = document.querySelector(".portfolio__button");
 let galleryAdditionalItemsSorted;
 
 let galleryShowed = false;
-// const galleryAdditionalItemsAll = document.querySelectorAll(".portfolio__gallery-item--additional");
 
-if(portfolioMenuSelected.dataset.filter == "all"){
-   portfolioMenuSelectedFilter = ""
-} else{
-portfolioMenuSelectedFilter = portfolioMenuSelected.dataset.filter;
+//checking whether clicked button has "all" attribute to use it in filter function
+function portfolioMenuFilter(){
+   if(portfolioMenuSelected.dataset.filter == "all"){
+      portfolioMenuSelectedFilter = ""
+   } else{
+      portfolioMenuSelectedFilter = portfolioMenuSelected.dataset.filter;
+   }
+}
+
+portfolioMenuFilter(); //calling this one time at the launch
+
+//Hiding gallery additional items on mune change
+function galleryAdditionalItemsHide(){
+   if(galleryShowed){
+      galleryAdditionalItemsSorted.forEach(function(element){ 
+         element.classList.toggle('portfolio__gallery-item--additional');
+         element.lastChild.previousSibling.classList.toggle("portfolio__gallery-image--additional");
+      });
+      portfolioShowMoreButton.removeAttribute("disabled");
+      galleryShowed = false;
+   }
 }
 
 function portfolioShowMoreButtonFunc(eventResult){
-console.log(portfolioMenuSelectedFilter)
-
    galleryAdditionalItemsSorted = document.querySelectorAll(`.portfolio__gallery-item--additional${portfolioMenuSelectedFilter}`);
    galleryAdditionalItemsSorted.forEach(function(element){
       element.classList.toggle('portfolio__gallery-item--additional');
-      setTimeout(()=>element.lastChild.previousSibling.classList.toggle("portfolio__gallery-image--additional"), 10);
-});
-   galleryShowed = true;
-   portfolioShowMoreButton.classList.toggle("portfolio__button--hidden")
+      setTimeout(()=>element.lastChild.previousSibling.classList.toggle("portfolio__gallery-image--additional"), 10); //timeout is needed in order for animation to work
+   });
+   galleryShowed = true; //remembering that we already showed additional items
+   portfolioShowMoreButton.setAttribute("disabled", "disabled")
 };
 
 function portfolioMenuCheck(event){
+   //checking if the clicked area was actually a button
    if(event.target.closest(".portfolio__menu-button")){
       portfolioMenuChange(event);
    }
 };
 
 function portfolioMenuChange(event){
+   //checking if the clicked button was new or it is already selected and nothing needs to be done
    if(event.target.closest(".portfolio__menu-button") !== portfolioMenuSelected){
       event.target.classList.toggle("portfolio__menu-button--selected");
       portfolioMenuSelected.classList.toggle("portfolio__menu-button--selected");
+      //remembering new selection
       portfolioMenuSelected = event.target;
-      if(portfolioMenuSelected.dataset.filter == "all"){
-         portfolioMenuSelectedFilter = ""
-      } else{
-      portfolioMenuSelectedFilter = portfolioMenuSelected.dataset.filter;
-   }
-      if(galleryShowed){
-         console.log("check")
-         galleryAdditionalItemsSorted.forEach(function(element){ 
-            element.classList.toggle('portfolio__gallery-item--additional');
-            setTimeout(()=>element.lastChild.previousSibling.classList.toggle("portfolio__gallery-image--additional"), 10);
-         });
-         portfolioShowMoreButton.classList.toggle("portfolio__button--hidden")
-         galleryShowed = false;
-      }
+      
+      portfolioMenuFilter();
+      galleryAdditionalItemsHide();
    }
 };
 

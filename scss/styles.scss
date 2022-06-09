@@ -517,15 +517,17 @@
       text-transform: uppercase;
       background-color: #FFFFFF;
       margin: 0 auto 75px;
+      &:disabled{
+         border: none;
+         background-color: #D5D5D5;
+         color: $buttons-color;
+      }
       @media(min-width: 768px){
          margin: 0 auto 99px;
       }
       @media(min-width: 1024px){
          margin: 0 auto 129px;
       }
-   }
-   &__button--hidden{
-      display: none;
    }
    &__form-link-wrapper{
       width: fit-content;
