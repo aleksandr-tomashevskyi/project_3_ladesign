@@ -122,7 +122,6 @@ function portfolioMenuChange(event){
       portfolioMenuSelected.classList.toggle("portfolio__menu-button--selected");
       //remembering new selection
       portfolioMenuSelected = event.target;
-      
       portfolioMenuFilter();
       galleryAdditionalItemsHide();
    }
@@ -133,3 +132,29 @@ portfolioShowMoreButton.addEventListener("click", portfolioShowMoreButtonFunc);
 
 //portfolio menu buttons end
 
+//    Header color change while scroll
+
+let lastKnownScrollPosition = window.scrollY;
+headerScroll();
+function headerScroll(){
+   lastKnownScrollPosition = window.scrollY;
+   if(lastKnownScrollPosition > 50){
+      document.querySelector(".header").classList.add("header--whitebg");
+      document.querySelector(".header__contact-phone").classList.add("header__contact-phone--whitebg");
+      document.querySelector(".logo__image-inner").classList.add("logo__image-inner--whitebg");
+      document.querySelector(".logo__image-inner").classList.add("logo__image-inner--whitebg");
+      document.querySelector(".logo__image-inner").nextElementSibling.classList.add("logo__image-inner--whitebg");
+      document.querySelector(".header__menu-icon").classList.add("header__menu-icon--whitebg");
+      document.querySelector(".header__menu-icon-item").classList.add("header__menu-icon-item--whitebg");
+   } else {
+      document.querySelector(".header").classList.remove("header--whitebg");
+      document.querySelector(".header__contact-phone").classList.remove("header__contact-phone--whitebg");
+      document.querySelector(".logo__image-inner").classList.remove("logo__image-inner--whitebg");
+      document.querySelector(".logo__image-inner").classList.remove("logo__image-inner--whitebg");
+      document.querySelector(".logo__image-inner").nextElementSibling.classList.remove("logo__image-inner--whitebg");
+      document.querySelector(".header__menu-icon").classList.remove("header__menu-icon--whitebg");
+      document.querySelector(".header__menu-icon-item").classList.remove("header__menu-icon-item--whitebg");
+   }
+};
+
+document.addEventListener("scroll", headerScroll)
