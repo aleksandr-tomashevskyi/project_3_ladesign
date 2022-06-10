@@ -38,6 +38,7 @@
    width: 100%;
    color: #FFFFFF;
    transition: all 0.2s;
+   z-index: 5;
    &--whitebg{
       background-color: #FFFFFF;
       color: $accent;
