@@ -3,6 +3,7 @@
 @import '_vars';
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400&family=Roboto:wght@300&display=swap');
+
 .wrapper{
    // start footer adjustment
    display: flex;
@@ -35,13 +36,19 @@
    position: fixed;
    margin: 0 auto;
    width: 100%;
+   color: #FFFFFF;
+   transition: all 0.2s;
+   &--whitebg{
+      background-color: #FFFFFF;
+      color: $accent;
+   }
    @media(min-width: 768px){
       height: 105px;
       margin-right: 80px;
    }
    @media(min-width: 1024px){
       margin-right: 0px;
-      margin-left: 10px;
+      // margin-left: 10px;
    }
    &__content{
       display: flex;
@@ -63,7 +70,7 @@
       @include menu-items-font;
       font-size: 16px;
       line-height: 18px;
-      color: #FFFFFF;
+      color: inherit;
       letter-spacing: 0.05em;
       position: relative;
       left: 12px;
@@ -84,7 +91,16 @@
          width: 21px;
          height: 21px;
       }
-      
+   }
+   &__contact-phone--whitebg{
+      &::before{
+         content: url(../icons/icon-phone--whitebg.svg);
+         position: absolute;
+         left: -27px;
+         top: -4px;
+         width: 21px;
+         height: 21px;
+      }
    }
    &__menu-icon{
       display: flex;
@@ -100,10 +116,17 @@
          display: none;
       }
    }
+   &__menu-icon--whitebg{
+      border-top: solid $accent 3px;
+      border-bottom: solid $accent 3px;
+   }
    &__menu-icon-item{
       width: 100%;
       height: 3px;
-      background-color: white;
+      background-color: #FFFFFF;
+   }
+   &__menu-icon-item--whitebg{
+      background-color: $accent;
    }
 }
 .logo{
@@ -119,6 +142,12 @@
       width: 100%;
       height: 100%;
       object-fit: contain;
+   }
+   &__image-inner{
+      fill: #FFFFFF;
+   }
+   &__image-inner--whitebg{
+      fill: $buttons-color;
    }
 }
 .navigation{
@@ -142,7 +171,7 @@
    &__link{
       text-transform: uppercase;
       @include menu-items-font;
-      color: #FFFFFF;
+      color: inherit;
       &:hover{
          border-bottom: solid #FFFFFF 1px;
       }
@@ -450,10 +479,10 @@
       position: relative;
       &:hover .portfolio__gallery-item-mask{
          opacity: 1;
-      pointer-events: all;
+         pointer-events: all;
       }
       @media(min-width: 768px){
-      min-height: auto;
+         min-height: auto;
       }
    }
    &__gallery-item--height{
