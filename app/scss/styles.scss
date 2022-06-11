@@ -177,6 +177,11 @@
          border-bottom: solid #FFFFFF 1px;
       }
    }
+   &__link--whitebg{
+      &:hover{
+      border-bottom: solid $accent 1px;
+      }
+   }
 }
 
 
