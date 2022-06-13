@@ -76,7 +76,7 @@ $icon-arrow-up-hover: "data:image/svg+xml,%3Csvg width='30' height='31' viewBox=
    background-size: cover;
    background-origin: padding-box;
 }
-@mixin buttons-effects{
+@mixin buttons-effects--white{
    transition-duration: 0.3s;
    &:hover{
       background-color: $buttons-color;
@@ -85,6 +85,19 @@ $icon-arrow-up-hover: "data:image/svg+xml,%3Csvg width='30' height='31' viewBox=
    }
    &:active{
       background-color: #4A415A;
+      border: solid $buttons-color 1px;
+      color: #FFFFFF;
+   }
+}
+@mixin buttons-effects--dark{
+   transition-duration: 0.3s;
+   &:hover{
+      background-color: #4A415A;
+      border: solid $buttons-color 1px;
+      color: #FFFFFF;
+   }
+   &:active{
+      background-color: #63557C;
       border: solid $buttons-color 1px;
       color: #FFFFFF;
    }
