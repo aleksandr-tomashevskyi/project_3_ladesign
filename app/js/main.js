@@ -132,7 +132,7 @@ portfolioShowMoreButton.addEventListener("click", portfolioShowMoreButtonFunc);
 
 //portfolio menu buttons end
 
-//    Header color change while scroll
+//    Header color change while scroll start
 
 let lastKnownScrollPosition = window.scrollY;
 const headerScroller = document.querySelectorAll(".header-scroller");
@@ -155,3 +155,24 @@ function headerScroll(){
 };
 
 document.addEventListener("scroll", headerScroll)
+
+//    Header color change while scroll end
+
+//    Popup form start
+
+const formLink = document.querySelector(".portfolio__form-link");
+const contactForm = document.querySelector(".contact-form");
+
+function showForm(){
+   document.querySelector(".contact-form").classList.toggle("contact-form--active");
+   setTimeout(()=>document.querySelector(".contact-form__body").classList.toggle("contact-form__body--active"), 10);
+}
+function hideForm(event){
+   if(!event.target.closest(".contact-form__body")){
+      document.querySelector(".contact-form").classList.toggle("contact-form--active");
+      document.querySelector(".contact-form__body").classList.toggle("contact-form__body--active");
+   }
+}
+
+formLink.addEventListener("click", showForm);
+contactForm.addEventListener("click", hideForm)

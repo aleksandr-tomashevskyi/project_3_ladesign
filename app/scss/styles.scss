@@ -1,9 +1,9 @@
 @import '_null';
 @import '../../node_modules/normalize.css/normalize';
 @import '_vars';
+@import '_global-elements';
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400&family=Roboto:wght@300&display=swap');
-
 .wrapper{
    // start footer adjustment
    display: flex;
@@ -306,6 +306,7 @@
       }
    }
    &__list-item-title-container{
+      color: $accent;
       position: relative;
       z-index: 2;
       background-color: #FFFFFF;
@@ -319,6 +320,7 @@
          transform: translateY(-50%);
       }
       &:hover{
+         color: $buttons-color;
          cursor: pointer;
          &::after{
             content: url($icon-arrow-down-hover);
@@ -343,12 +345,8 @@
    }
    &__list-item-title{
       @include title-fourth-font;
-      color: $accent;
       text-transform: uppercase;
       max-width: 236px;
-      &:hover{
-         color: $buttons-color;
-      }
       @media(min-width: 768px){
          max-width: 442px;
       }
@@ -556,7 +554,7 @@
       border: solid $buttons-color 1px;
       color: $buttons-color;
       @include menu-items-font;
-      @include buttons-effects;
+      @include buttons-effects--white;
       text-transform: uppercase;
       background-color: #FFFFFF;
       margin: 0 auto 75px;
@@ -572,26 +570,28 @@
          margin: 0 auto 129px;
       }
    }
-   &__form-link-wrapper{
-      width: fit-content;
-      margin: 0 auto;
-      // display: block;
-   }
    &__form-link{
+      display: block;
       @include title-second-font;
       text-transform: uppercase;
       color: $accent;
       border-bottom: solid $lines 1px;
-      cursor: pointer;
+      background-color: transparent;
+      margin: 0 auto;
       @include menu-items-hover;
       &::after{
-         content: url(../icons/group.svg);
+         content: url(../icons/icon-form-link-arrow.svg);
          position: relative;
          width: 16px;
          height: 16px;
          top: -13px;
          left: 10px;
       }
+      &:hover{ 
+         &::after{
+         content: url(../icons/icon-form-link-arrow--hover.svg);
+      }
+   }
    }
 }
 
