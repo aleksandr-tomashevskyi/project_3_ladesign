@@ -4,6 +4,9 @@
 @import '_global-elements';
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400&family=Roboto:wght@300&display=swap');
+body{
+   position: relative;
+}
 .wrapper{
    // start footer adjustment
    display: flex;
@@ -179,7 +182,7 @@
    }
    &__link--whitebg{
       &:hover{
-      border-bottom: solid $accent 1px;
+         border-bottom: solid $accent 1px;
       }
    }
 }
@@ -571,27 +574,44 @@
       }
    }
    &__form-link{
-      display: block;
       @include title-second-font;
+      @include menu-items-hover;
+      display: block;
       text-transform: uppercase;
       color: $accent;
       border-bottom: solid $lines 1px;
       background-color: transparent;
       margin: 0 auto;
-      @include menu-items-hover;
+      font-size: 16px;
+      line-height: 19px;
+      letter-spacing: 0.12em;
+      @media(min-width: 768px){
+         @include title-second-font;
+         
+      }
       &::after{
-         content: url(../icons/icon-form-link-arrow.svg);
+         content: "";
+         background-image: url(../icons/icon-form-link-arrow.svg);
+         background-size: contain;
+         display: inline-block;
          position: relative;
-         width: 16px;
-         height: 16px;
-         top: -13px;
-         left: 10px;
+         width: 10px;
+         height: 10px;
+         top: -2px;
+         left: 5px;
+         font-size: 5px;
+         @media(min-width: 768px){
+            width: 16px;
+            height: 16px;
+            top: -13px;
+            left: 10px;
+         }
       }
       &:hover{ 
          &::after{
-         content: url(../icons/icon-form-link-arrow--hover.svg);
+            background-image: url(../icons/icon-form-link-arrow--hover.svg);
+         }
       }
-   }
    }
 }
 
