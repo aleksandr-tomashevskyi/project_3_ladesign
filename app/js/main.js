@@ -159,20 +159,48 @@ document.addEventListener("scroll", headerScroll)
 //    Header color change while scroll end
 
 //    Popup form start
+let bodyScrollDisableFlag = false;
+let acceptionWindowFlag = false;
 
 const formLink = document.querySelector(".portfolio__form-link");
-const contactForm = document.querySelector(".contact-form");
+
+const contactForm = document.querySelector(".popup-form");
+
+const popupFormButton = document.querySelector(".popup-form__button")
 
 function showForm(){
-   document.querySelector(".contact-form").classList.toggle("contact-form--active");
-   setTimeout(()=>document.querySelector(".contact-form__body").classList.toggle("contact-form__body--active"), 10);
+   document.querySelector(".popup-form").classList.toggle("popup-form--active");
+   setTimeout(()=>document.querySelector(".popup-form__body").classList.toggle("popup-form__body--active"), 10);
+   //disabling scroll
+   if(!bodyScrollDisableFlag){ //checking if scroll was already disabled
+      document.body.style.overflow = 'hidden'; //scroll disable
+      document.body.style.left = '-7px'; //removing jumping of the content due to scroll width being removed
+      bodyScrollDisableFlag = true; //setting memory flag for returning scroll back in the future
+   }
 }
 function hideForm(event){
-   if(!event.target.closest(".contact-form__body")){
-      document.querySelector(".contact-form").classList.toggle("contact-form--active");
-      document.querySelector(".contact-form__body").classList.toggle("contact-form__body--active");
+   if(!event.target.closest(".popup-form__body")){
+      document.querySelector(".popup-form").classList.toggle("popup-form--active");
+      document.querySelector(".popup-form__body").classList.toggle("popup-form__body--active");
+      //returning scroll
+      if(bodyScrollDisableFlag){
+         document.body.style.overflow = 'auto';
+         document.body.style.left = '0';
+         bodyScrollDisableFlag = false;
+      }
+      if(acceptionWindowFlag){
+         document.querySelector(".popup-form__wrapper").classList.toggle("popup-form__wrapper--accepted");
+         acceptionWindowFlag = false;
+      }
    }
+}
+
+function showAccepted(event){
+   event.preventDefault();
+   document.querySelector(".popup-form__wrapper").classList.toggle("popup-form__wrapper--accepted");
+   acceptionWindowFlag = true;
 }
 
 formLink.addEventListener("click", showForm);
 contactForm.addEventListener("click", hideForm)
+popupFormButton.addEventListener("click", showAccepted)
