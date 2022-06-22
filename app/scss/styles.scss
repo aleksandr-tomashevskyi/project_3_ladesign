@@ -78,6 +78,7 @@ body{
       letter-spacing: 0.05em;
       position: relative;
       left: 12px;
+      z-index: 6;
       @media(min-width: 768px){
          margin-right: 80px;
          font-size: 18px;
@@ -116,6 +117,8 @@ body{
       position: relative;
       border-top: solid #FFFFFF 3px;
       border-bottom: solid #FFFFFF 3px;
+      cursor: pointer;
+      z-index: 6;
       @media(min-width: 1024px){
          display: none;
       }
@@ -138,6 +141,7 @@ body{
    width: 30px;
    height: 30px;
    background: transparent;
+   z-index: 6;
    @media(min-width: 768px){
       width: 45px;
       height: 45px;
@@ -155,35 +159,71 @@ body{
    }
 }
 .navigation{
-   display: none;
+   display: block;
+   flex: 0;
    position: relative;
    left: 16px;
    @media(min-width: 1024px){
-      display: block;
       flex: 1;
    }
    &__list{
+      justify-content: center;
+      @media(min-width: 1024px){
       flex: 1;
       display: flex;
-      justify-content: center;
+      }
    }
    &__list-item{
+      margin: 60px auto;
+      @media(min-width: 450px){
+      margin: 100px auto;
+      }
+      
+      @media(min-width: 1024px){
+         margin: 0;
       &:nth-child(2){
          margin: 0 50px;
       }
+   }
    }
    &__link{
       text-transform: uppercase;
       @include menu-items-font;
       color: inherit;
+      font-size: 24px;
       &:hover{
          border-bottom: solid #FFFFFF 1px;
+      }
+      @media(min-width: 450px){
+         font-size: 40px;
+      }
+      @media(min-width: 769px){
+         @include menu-items-font;
       }
    }
    &__link--whitebg{
       &:hover{
          border-bottom: solid $accent 1px;
       }
+   }
+   &__body{
+      @media(max-width: 1024px){
+      display: flex;
+      position: fixed;
+      left: 0;
+      top: -100%;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.98);
+      transition: top 0.3s ease 0s;
+      overflow: auto;
+      justify-content: center;
+      align-items: center;
+      z-index: 5;
+      }
+   }
+   &__body--active{
+      top: 0;
    }
 }
 

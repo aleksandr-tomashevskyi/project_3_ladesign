@@ -169,7 +169,8 @@
             color: $accent;
             display: block;
             margin: 0 auto 15px;
-            text-align: center
+            text-align: center;
+            text-transform: uppercase;
          }
          &__accepted-text{
             @include plain-text-font;

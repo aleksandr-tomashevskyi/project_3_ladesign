@@ -137,28 +137,33 @@ portfolioShowMoreButton.addEventListener("click", portfolioShowMoreButtonFunc);
 let lastKnownScrollPosition = window.scrollY;
 const headerScroller = document.querySelectorAll(".header-scroller");
 let headerScrollerPrototype;
-headerScroll();
+let scrollerMemoryFlag = false; //for use in burfer menu function
 
 function headerScroll(){
    lastKnownScrollPosition = window.scrollY;
    if(lastKnownScrollPosition > 50){
       headerScroller.forEach((element)=> {
          headerScrollerPrototype = element.classList[0];
-         element.classList.add(`${headerScrollerPrototype}--whitebg`)
+         element.classList.add(`${headerScrollerPrototype}--whitebg`);
+         scrollerMemoryFlag = true;
       })
    } else {
       headerScroller.forEach((element)=> {
          headerScrollerPrototype = element.classList[0];
-         element.classList.remove(`${headerScrollerPrototype}--whitebg`)
+         element.classList.remove(`${headerScrollerPrototype}--whitebg`);
+         scrollerMemoryFlag = false;
       })
    }
 };
+
+headerScroll(); //launching this function one time on page load
 
 document.addEventListener("scroll", headerScroll)
 
 //    Header color change while scroll end
 
 //    Popup form start
+
 let bodyScrollDisableFlag = false;
 let acceptionWindowFlag = false;
 
@@ -166,28 +171,43 @@ const formLink = document.querySelector(".portfolio__form-link");
 
 const contactForm = document.querySelector(".popup-form");
 
-const popupFormButton = document.querySelector(".popup-form__button")
+const popupFormButton = document.querySelector(".popup-form__button");
+
+function hideShowScroll(){
+   if(!(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent))){
+      // true for mobile device
+   if(!bodyScrollDisableFlag){ //checking if scroll was already disabled
+      document.body.style.overflow = 'hidden'; //scroll disable
+      document.body.style.left = '-7px'; //removing jumping of the content due to scroll width being removed
+      bodyScrollDisableFlag = true; //setting memory flag for returning scroll back in the future
+   } else{
+      document.body.style.overflow = 'auto';
+         document.body.style.left = '0';
+         bodyScrollDisableFlag = false;
+   }
+} else{
+   if(!bodyScrollDisableFlag){ //checking if scroll was already disabled
+      document.body.style.overflow = 'hidden'; //scroll disable
+      bodyScrollDisableFlag = true; //setting memory flag for returning scroll back in the future
+   } else{
+      document.body.style.overflow = 'auto';
+         bodyScrollDisableFlag = false;
+   }
+}
+}
 
 function showForm(){
    document.querySelector(".popup-form").classList.toggle("popup-form--active");
    setTimeout(()=>document.querySelector(".popup-form__body").classList.toggle("popup-form__body--active"), 10);
    //disabling scroll
-   if(!bodyScrollDisableFlag){ //checking if scroll was already disabled
-      document.body.style.overflow = 'hidden'; //scroll disable
-      document.body.style.left = '-7px'; //removing jumping of the content due to scroll width being removed
-      bodyScrollDisableFlag = true; //setting memory flag for returning scroll back in the future
-   }
+   hideShowScroll();
 }
 function hideForm(event){
    if(!event.target.closest(".popup-form__body")){
       document.querySelector(".popup-form").classList.toggle("popup-form--active");
       document.querySelector(".popup-form__body").classList.toggle("popup-form__body--active");
       //returning scroll
-      if(bodyScrollDisableFlag){
-         document.body.style.overflow = 'auto';
-         document.body.style.left = '0';
-         bodyScrollDisableFlag = false;
-      }
+      hideShowScroll();
       if(acceptionWindowFlag){
          document.querySelector(".popup-form__wrapper").classList.toggle("popup-form__wrapper--accepted");
          acceptionWindowFlag = false;
@@ -202,5 +222,39 @@ function showAccepted(event){
 }
 
 formLink.addEventListener("click", showForm);
-contactForm.addEventListener("click", hideForm)
-popupFormButton.addEventListener("click", showAccepted)
+contactForm.addEventListener("click", hideForm);
+popupFormButton.addEventListener("click", showAccepted);
+
+//    Burger menu show\hide
+
+const menuIconBlock = document.querySelector(".header__menu-icon");
+let burgerMenuMemoryFlag = false;
+
+function whiteMenuElements(){
+   if(scrollerMemoryFlag){ //making header elements white if not already
+      if(burgerMenuMemoryFlag){
+         headerScroller.forEach((element)=> {
+            headerScrollerPrototype = element.classList[0];
+            element.classList.remove(`${headerScrollerPrototype}--whitebg`);
+         })
+      } else{
+         headerScroller.forEach((element)=> {
+            headerScrollerPrototype = element.classList[0];
+            element.classList.add(`${headerScrollerPrototype}--whitebg`);
+         })
+      }
+   }
+}
+
+function showHideBurgerMenu(event){
+   document.querySelector(".navigation__body").classList.toggle("navigation__body--active");
+   if(!burgerMenuMemoryFlag){
+      burgerMenuMemoryFlag = true;
+   } else{
+      burgerMenuMemoryFlag = false;
+   }
+   whiteMenuElements();
+   hideShowScroll();
+}
+
+menuIconBlock.addEventListener("click", showHideBurgerMenu)
