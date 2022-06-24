@@ -207,3 +207,11 @@
             transform: rotateX(180deg);
          }
       }
+
+      .spacer-portfolio-page{
+         width: 100%;
+         height: 70px;
+         @media(min-width: 768px){
+            height: 105px;
+         }
+      }

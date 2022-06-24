@@ -1,11 +1,9 @@
 'use strict'
 var mixer = mixitup('.portfolio__gallery');
 
-
 //    About list logic start
 
 const aboutList = document.querySelector('.about__list')
-
 let clickedAboutItem;
 let aboutContainerForChange;
 let aboutTextForChange;
@@ -25,36 +23,10 @@ function aboutOpenNestedList(){
    aboutTitleContainerForChange.classList.toggle('about__list-item-title-container--active');
    setTimeout(()=> aboutTextForChange.classList.toggle('about__list-item-text--active'), 10);
 }
-
+if(aboutList){
 aboutList.addEventListener("click", checkClickAbout);
-
+}
 //    About list logic end
-
-// //    Portfolio menu sliding
-
-// const portfolioMenu = document.querySelector('.portfolio__menu');
-// let portfolioTouchStartX;
-// let portfolioTouchEndX;
-
-// function portfolioTouchStart(event){
-//    event.preventDefault();
-//    portfolioTouchStartX = Math.floor(event.changedTouches[0].clientX);
-//    console.log(portfolioTouchStartX)
-// }
-
-// function portfolioTouchEnd(event){
-
-// }
-
-// portfolioMenu.addEventListener('touchstart', portfolioTouchStart)
-// // portfolioMenu.addEventListener('touchmove', function(event){
-// //    console.log(event.changedTouches[0])
-// // })
-// portfolioMenu.addEventListener('touchend', function(event){
-//    portfolioTouchEndX = Math.floor(event.changedTouches[0].clientX);
-//    console.log(portfolioTouchEndX)
-// })
-
 
 //    Porfolio logic start
 
@@ -137,7 +109,7 @@ portfolioShowMoreButton.addEventListener("click", portfolioShowMoreButtonFunc);
 let lastKnownScrollPosition = window.scrollY;
 const headerScroller = document.querySelectorAll(".header-scroller");
 let headerScrollerPrototype;
-let scrollerMemoryFlag = false; //for use in burfer menu function
+let scrollerMemoryFlag = false; //for use in burger menu function
 
 function headerScroll(){
    lastKnownScrollPosition = window.scrollY;
@@ -155,10 +127,21 @@ function headerScroll(){
       })
    }
 };
+function headerScrollWhiteLoad(){
+   headerScroller.forEach((element)=> {
+      headerScrollerPrototype = element.classList[0];
+      element.classList.add(`${headerScrollerPrototype}--whitebg`);
+      scrollerMemoryFlag = true;
+   })
+}
 
+// checking the page we are loaded in
+if(document.title != "Ladesign portfolio"){
 headerScroll(); //launching this function one time on page load
-
 document.addEventListener("scroll", headerScroll)
+} else{
+   headerScrollWhiteLoad();
+}
 
 //    Header color change while scroll end
 

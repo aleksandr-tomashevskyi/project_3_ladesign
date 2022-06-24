@@ -197,7 +197,7 @@ body{
       @media(min-width: 450px){
          font-size: 40px;
       }
-      @media(min-width: 769px){
+      @media(min-width: 1024px){
          @include menu-items-font;
       }
    }
@@ -207,7 +207,7 @@ body{
       }
    }
    &__body{
-      @media(max-width: 1024px){
+      @media(max-width: 1023px){
       display: flex;
       position: fixed;
       left: 0;
